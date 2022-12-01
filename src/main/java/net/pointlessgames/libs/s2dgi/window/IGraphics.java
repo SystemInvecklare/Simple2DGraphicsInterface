@@ -17,4 +17,18 @@ public interface IGraphics {
 	 * tint and additive is assumed to be reset at {@link IWindow#renderBegin()}
 	 */
 	<C> void setAdditive(C color, IColorInterpreter<C> colorInterpreter);
+	/**
+	 * <p>Implementations promise to make a snapshot copy of the clipping rectangle when this is called.</p>
+	 * <p>Calling this with {@code null} corresponds to clearing any current clipping.</p>
+	 * <p>Clipping is reset to an implementation dependent default at {@link IWindow#renderBegin()}. For example {@code null} or a rectangle covering the whole window.</p>
+	 */
+	void setClip(IClippingRectangle clippingRectangle);
+	/**
+	 * @see #setClip(IClippingRectangle)
+	 */
+	void setClip(int x, int y, int width, int height);
+	/**
+	 * Returns an immutable copy of the current clip rectangle, or {@code null} if there is currently no clipping set.
+	 */
+	IClippingRectangle getClip();
 }
