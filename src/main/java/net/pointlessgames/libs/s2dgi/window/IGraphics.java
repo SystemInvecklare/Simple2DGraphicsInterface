@@ -6,6 +6,22 @@ import net.pointlessgames.libs.s2dgi.texture.ITexture;
 public interface IGraphics {
 	void render(ITexture texture, int x, int y);
 	void render(ITexture texture, int x, int y, int width, int height);
+	/**
+	 * Implementations should combine parameter transforms in the following order.
+	 * 1. Apply flipX and flipY
+	 * 2. Apply rotation
+	 * 3. Apply translastion.
+	 * 
+	 * @param texture
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param quarterRotations
+	 * @param flipX
+	 * @param flipY
+	 * @param rotateDimensions
+	 */
 	void render(ITexture texture, int x, int y, int width, int height, int quarterRotations, boolean flipX, boolean flipY, boolean rotateDimensions);
 	void renderTiled(ITexture texture, int offsetX, int offsetY, int x, int y, int width, int height);
 	<C> void renderRectangle(int x, int y, int width, int height, C color, IColorInterpreter<C> colorInterpreter);
